@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from models import db, Activity, Camper, Signup
-from flask_restful import Api, Resource
 from flask_migrate import Migrate
 from flask import Flask, make_response, jsonify, request
 import os
@@ -24,6 +23,13 @@ db.init_app(app)
 @app.route('/')
 def home():
     return ''
+
+@app.get('/campers')
+def campers():
+    campers = db.session.query(Camper)
+    for c in campers:
+        
+    return db.session.query(Camper)
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
